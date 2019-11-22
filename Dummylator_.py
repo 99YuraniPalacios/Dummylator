@@ -97,14 +97,15 @@ class Dummylator(object):
                 elif self.operacionActual == 'log':
                     self.valorActual = np.log(self.valorGuardado)
                     
-                elif self.operacionActual == '^':
+                elif self.operacionActual == 'Potencia':
                     self.valorActual = pow(self.valorGuardado, self.valorActual)
                 
                 self.valorGuardado = 0
                 self.textoEntrada.set(self.valorActual)
                 self.reiniciarInfo()
                 
-            elif operacion in ["Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh","Tan","Tanh","Factorial","Exp","sqrt","log","^"]:
+            elif operacion in ["Decimal","Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh",
+                               "Tan","Tanh","Factorial","Exp","sqrt","log","Potencia"]:
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
@@ -160,14 +161,15 @@ class Dummylator(object):
                 elif self.operacionActual == 'log':
                     self.valorActual = np.log(self.valorActual)
                     
-                elif self.operacionActual == '^':
+                elif self.operacionActual == 'Potencia':
                     self.valorActual = pow(self.valorGuardado, self.valorActual)
                 
                 self.valorGuardado = 0
                 self.textoEntrada.set(self.valorActual)
                 self.reiniciarInfo()
                 
-            elif operacion in ["Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh","Tan","Tanh","Factorial","Exp","sqrt","log","^"]:
+            elif operacion in ["Decimal","Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh","Tan",
+                               "Tanh","Factorial","Exp","sqrt","log","Potencia"]:
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
