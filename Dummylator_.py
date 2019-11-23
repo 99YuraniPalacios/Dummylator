@@ -17,6 +17,7 @@ class Dummylator(object):
         self.positivo = True
         self.siguienteDecimal = False
         self.decimales = 0
+        self.historial = 0
         
         self.textoEntrada = tk.StringVar()
         self.textoEntrada.set('0')
@@ -45,7 +46,7 @@ class Dummylator(object):
         self.valorActual = 0
         self.positivo = True
         self.siguienteDecimal = False
-        self.decimales = 0
+        self.decimales = 0            
                 
     def funcOperacionSimple(self,operacion):
         if operacion == 'Decimal':
@@ -102,10 +103,10 @@ class Dummylator(object):
                 
                 self.valorGuardado = 0
                 self.textoEntrada.set(self.valorActual)
-                self.reiniciarInfo()
                 
             elif operacion in ["Decimal","Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh",
                                "Tan","Tanh","Factorial","Exp","sqrt","log","Potencia"]:
+                
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
@@ -166,14 +167,18 @@ class Dummylator(object):
                 
                 self.valorGuardado = 0
                 self.textoEntrada.set(self.valorActual)
-                self.reiniciarInfo()
                 
             elif operacion in ["Decimal","Suma","Resta","Multipl","Division", "Sen","Senh","Cos","Cosh","Tan",
                                "Tanh","Factorial","Exp","sqrt","log","Potencia"]:
+                
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
                 
+    def activarFuncion(self):
+        messagebox.showinfo(message="Debe seleccionar un modo de entrada antes de empezar a utilizar la calculadora",
+                            title="Funcionalidad")                
+        
     def modoEntrada(self,ventana,opciones):
         self.opc = tk.StringVar()
  
@@ -203,7 +208,8 @@ class Dummylator(object):
         self.reiniciarInfo()
         
     def Historial(self):
+        self.historial = self.funcOperacion('Igual')
         self.f = open('Historial.txt','w')
-        self.f.write(self.valorActual)
+        self.f.write(str(self.historial))
         self.f.close()
         

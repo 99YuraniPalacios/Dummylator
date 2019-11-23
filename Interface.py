@@ -29,23 +29,6 @@ class Visualizacion(object):
        self.ventanaNueva.config(background = "gray85")
        return self.ventanaNueva
    
-    def destruirVentana(self,ventana):
-        if ventana:
-            ventana.destroy()
-            return ventana
-   
-    def mostrarError(self,mensaje): 
-       self.ventanaError = tk.Tk()
-       self.ventanaError.title("Error")
-       self.ventanaError.geometry("100x100")
-       self.ventanaError.config(background = "gray85")
-       
-       tk.Label(self.ventanaError,text=mensaje,font='Arial 10 bold',background="white").place(x=15,y=20)
-       tk.Button(self.ventanaError, text="OK", command=self.ventanaError.destroy,background="gray20",
-                 font='Arial 11 bold').place(x=140,y=60)
-       
-       return self.ventanaError
-   
     def crearBoton(self,ventana,texto,bg,comando):
         boton = tk.Button(ventana, text=texto,bg=bg,fg="white",
                           activebackground="LightCyan3", width = 2, height = 2,command=comando) 
@@ -71,6 +54,7 @@ class Visualizacion(object):
         self.etiquetaOpciones["font"] = ('Comic Sans MS', 10, 'bold italic')
         self.etiquetaOpciones["background"] = "gray85"
         self.etiquetaOpciones.pack()
+        self.Dummylator.activarFuncion()
         
         self.botonPrimaria = self.crearBotonNivel(self.ventanaPrincipal,"Primaria",
                                                   self.cargarWidgetsPrimaria).place(x=10,y=5)
@@ -127,7 +111,6 @@ class Visualizacion(object):
         
         self.botonHistorial = self.crearBotonNivel(self.ventanaPrincipal,"Historial",
                                                    lambda:self.Dummylator.Historial()).place(x=400,y=450)
-        
         
     def cargarWidgetsPrimaria(self):
         
@@ -200,8 +183,10 @@ class Visualizacion(object):
         self.panelEntradas = self.crearEntrada(self.ventanaSecundaria,25).place(x=100, y=200)
         self.combobox = self.Dummylator.modoEntrada(self.ventanaSecundaria, ["Simple","Formula"])
         
-        self.botonPrimaria = self.crearBotonNivel(self.ventanaSecundaria, "Primaria",self.cargarWidgetsPrimaria).place(x=10,y=5)
-        self.botonUniversidad = self.crearBotonNivel(self.ventanaSecundaria, "Universidad",self.cargarWidgetsUniversidad).place(x=10,y=71)
+        self.botonPrimaria = self.crearBotonNivel(self.ventanaSecundaria, "Primaria",
+                                                  self.cargarWidgetsPrimaria).place(x=10,y=5)
+        self.botonUniversidad = self.crearBotonNivel(self.ventanaSecundaria, "Universidad",
+                                                     self.cargarWidgetsUniversidad).place(x=10,y=71)
 
         self.botonUno = self.crearBoton(self.ventanaSecundaria,"1","gray20",
                                         lambda:self.Dummylator.funcNumero(1)).place(x=120,y=260)
