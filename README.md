@@ -14,7 +14,7 @@ Antes de usar la aplicación debe verificar que esten instaladas las siguientes 
   2. tkinter
   3. numpy
   4. PIL 
-  5. unnitest
+  5. unittest
   
 ```
 ## Uso
