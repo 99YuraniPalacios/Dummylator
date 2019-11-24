@@ -19,22 +19,23 @@ class TestDummylator(unittest.TestCase):
     def test_funcNumero(self):
         self.app = DL.Dummylator()
         numero = self.app.funcNumero(4)
-        self.assertIsNone(numero, 4)
+        return self.assertEqual(numero, 4)
+    
+    def test_operacionSigno(self):
+        self.app = DL.Dummylator()
+        cambio = self.app.operacionCambioSigno()
+        return unittest.skip(cambio)
     
     def test_funcOperacion(self):
         self.app = DL.Dummylator()
         operacion = self.app.funcOperacionSimple("Suma")
-        self.assertIsNone(operacion, "Suma")
+        return self.assertEqual(operacion, "Suma")
 
     def test_funcBorrar(self):
         self.app = DL.Dummylator()
         borrar = self.app.funcBorrar()
         self.assertIsNone(borrar)
-        
-    def test_operacionSigno(self):
-        self.app = DL.Dummylator()
-        cambio = self.app.operacionCambioSigno()
-        self.assertIsNone(cambio)
+    
     
     """
     def test_activarFuncion(self):

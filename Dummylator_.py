@@ -36,11 +36,13 @@ class Dummylator(object):
             else:
                 self.valorActual = (self.valorActual * 10) - valor
         self.textoEntrada.set(self.valorActual)
+        return self.valorActual
 
     def operacionCambioSigno(self):
         self.positivo = not self.positivo
         self.valorActual *= -1
         self.textoEntrada.set(self.valorActual)
+        return self.valorActual
 
     def reiniciarInfo(self):            
         self.valorActual = 0
@@ -110,6 +112,8 @@ class Dummylator(object):
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
+                
+        return operacion
                 
     
     def funcOperacionFormula(self,operacion):
