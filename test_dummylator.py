@@ -13,81 +13,95 @@ class TestDummylator(unittest.TestCase):
         try:
             self.app = DL.Dummylator()
         except NameError:
-            raise AssertionError("La clase Dummylator no está definida")
+            raise AssertionError("La clase Dummylator no esta definida")
         return True
 
     def test_funcNumero(self):
-        try:
-            DL.Dummylator().funcNumero(4)
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si el numero fue ingresado") 
-
+        self.app = DL.Dummylator()
+        numero = self.app.funcNumero(4)
+        self.assertIsNone(numero, 4)
+    
     def test_funcOperacion(self):
-        try:
-            DL.Dummylator().funcOperacion("Suma")
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si la función fue ingresada") 
+        self.app = DL.Dummylator()
+        operacion = self.app.funcOperacionSimple("Suma")
+        self.assertIsNone(operacion, "Suma")
 
     def test_funcBorrar(self):
-        try:
-            DL.Dummylator().funcBorrar()
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si la operación fue borrada") 
-        
-    def test_activarFuncion(self):
-        try:
-            DL.Dummylator().activarFuncion()
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si la función fue activada")
+        self.app = DL.Dummylator()
+        borrar = self.app.funcBorrar()
+        self.assertIsNone(borrar)
         
     def test_operacionSigno(self):
-        try:
-            DL.Dummylator().operacionCambioSigno()
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si se cambio el signo")
-        
+        self.app = DL.Dummylator()
+        cambio = self.app.operacionCambioSigno()
+        self.assertIsNone(cambio)
+    
+    """
+    def test_activarFuncion(self):
+        raiz = tk.Tk()
+        self.app = DL.Dummylator(raiz)
+        activar = self.app.activarFuncion()
+        self.assertIsNone(activar)
+    """
     
     def test_instance_Interface(self):
         try:
-            self.app = Int.Visualizacion()
+            raiz = tk.Tk()
+            self.app = Int.Visualizacion(raiz)
         except NameError:
-            raise AssertionError("La clase Interface no está definida")
+            raise AssertionError("La clase Interface no esta definida")
         return True
     
+    """
     def test_crearVentanaPrincipal(self):
-        self.app = Int.Visualizacion()
-        self.ventana = Int.Visualizacion.crearVentanaPrincipal(self.app)
-        return isinstance(self.ventana,tk.Tk)
+        raiz = tk.Tk()
+        self.app = Int.Visualizacion(raiz)
+        ventanaP = self.app.crearVentanaPrincipal(self.app)
+        self.assertIsInstance(ventanaP)
+        
     
     def test_crearNuevaVentana(self):
-        self.app = Int.Visualizacion()
-        self.ventanaNueva = Int.Visualizacion.crearNuevaVentana(self.app,"test nueva ventana")
-        return isinstance(self.ventanaNueva,tk.Tk)
+        raiz = tk.Tk()
+        self.app = Int.Visualizacion(raiz)
+        ventanaNueva = self.app.crearNuevaVentana(self.app,"test nueva ventana")
+        self.assertFalse(ventanaNueva)
+        #return isinstance(self.ventanaNueva, tk.Tk)
+    
         
-   def test_crearBoton(self):
-        self.app = Int.Visualizacion()
-        self.ventana = Int.Visualizacion.crearVentanaPrincipal(self.app)
-        boton = Int.Visualizacion.crearBoton(self.app,ventana=self.ventana,
-        texto="5",bg="gray20",comando=self.DL.funcNumero(1))
-        return isinstance(boton,tk.button)
+    def test_crearBoton(self):
+       app = Int.Visualizacion(tk.Tk())
+       ventana = app.crearVentanaPrincipal(app)
+       boton = Int.Visualizacion.crearBoton(app,ventana=self.ventana,
+                                            texto="5",bg="gray20",comando=None)
+       self.assertIsInstance(boton,tk.button)
+       app.destruirVentana(ventana)
     
     def test_crearEntrada(self):
-        self.app = Int.Visualizacion()
-        self.ventana = Int.Visualizacion.crearNuevaVentana(self.app, "test_Entrada")
-        entrada = Int.Visualizacion.crearEntrada(ventana,21)
-        return isinstance(entrada,tk.Entry)
-    
+        app = Int.Visualizacion(tk.Tk())
+        ventana = app.crearNuevaVentana(app, None)
+        entrada = app.crearEntrada(ventana,None)
+        self.assertIsInstance(entrada,tk.Entry)
+        app.destruirVentana(ventana)
+    """
+
     def test_cargarWidgetsPrimaria(self):
-        try:
-            Int.Visualizacion.cargarOpcionesIniciales()
-        except ValueError:
-            return True
-        raise AssertionError("No verifica si se cargaron las opciones iniciales")
+        raiz = tk.Tk()
+        self.app = Int.Visualizacion(raiz)
+        primaria = self.app.cargarWidgetsPrimaria()
+        return isinstance(primaria, tk.Tk)
+    
+    def test_cargarWidgetsSecundaria(self):
+        raiz = tk.Tk()
+        self.app = Int.Visualizacion(raiz)
+        secundaria = self.app.cargarWidgetsSecundaria()
+        return isinstance(secundaria, tk.Tk)
+    
+    def test_cargarWidgetsUniversidad(self):
+        raiz = tk.Tk()
+        self.app = Int.Visualizacion(raiz)
+        universidad = self.app.cargarWidgetsUniversidad()
+        return isinstance(universidad, tk.Tk)
+    
         
 
 if __name__=="__main__":

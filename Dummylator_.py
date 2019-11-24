@@ -180,7 +180,7 @@ class Dummylator(object):
                             title="Funcionalidad")                
         
     def modoEntrada(self,ventana,opciones):
-        self.opc = tk.StringVar()
+        self.opc = tk.StringVar(ventana)
  
         combobox = ttk.Combobox(ventana,font=('Comic Sans MS',8,"bold italic"),textvariable=self.opc)
         combobox.config(values=opciones)
@@ -194,12 +194,12 @@ class Dummylator(object):
         select=self.opc.get()
         if select == "Simple":
             self.funcOperacion = self.funcOperacionSimple
-            messagebox.showinfo(message="El modo de entrada es'Simple': En este modo primero debe digitar el número y después la función", 
+            messagebox.showinfo(message="El modo de entrada es'Simple': En este modo primero debe digitar el numero y despues la funcion", 
                                 title="Modo de Entrada")
             
         elif select == "Formula":
             self.funcOperacion = self.funcOperacionFormula
-            messagebox.showinfo(message="El modo de entrada es 'Formula': En este modo primero debe digitar la función y después el número", 
+            messagebox.showinfo(message="El modo de entrada es 'Formula': En este modo primero debe digitar la funcion y despues el numero", 
                                 title="Modo de Entrada")
         
     def funcBorrar(self):

@@ -41,7 +41,7 @@ class Visualizacion(object):
         
     
     def crearEntrada(self,ventana,width):
-        self.textoEntrada = tk.StringVar()
+        self.textoEntrada = tk.StringVar(ventana)
         self.textoEntrada.set('0')
         entrada = tk.Entry(ventana, font=('Comic Sans MS', 14, 'bold italic'),
                            width=width,textvariable=self.Dummylator.textoEntrada,
