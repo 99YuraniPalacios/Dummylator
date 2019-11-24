@@ -70,7 +70,6 @@ class TestDummylator(unittest.TestCase):
         selEntrada = self.app1.seleccionEntrada(modoEntrada)
         return isinstance(selEntrada, tk.Tk)
 
-
     def test_crearNuevaVentana(self):
         raiz = tk.Tk()
         self.app = It.Visualizacion(raiz)
@@ -97,6 +96,12 @@ class TestDummylator(unittest.TestCase):
         ventana = app.crearNuevaVentana(None)
         entrada = app.crearEntrada(ventana,21)
         return isinstance(entrada,tk.Tk)
+    
+    def test_cargarOpcionesIniciales(self):
+        raiz = tk.Tk()
+        self.app = It.Visualizacion(raiz)
+        opciones = self.app.cargarOpcionesIniciales()
+        return isinstance(opciones, tk.Tk)
 
     def test_cargarWidgetsPrimaria(self):
         raiz = tk.Tk()
