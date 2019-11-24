@@ -48,7 +48,8 @@ class Dummylator(object):
         self.valorActual = 0
         self.positivo = True
         self.siguienteDecimal = False
-        self.decimales = 0            
+        self.decimales = 0
+        return self.valorActual,self.positivo,self.siguienteDecimal,self.decimales
                 
     def funcOperacionSimple(self,operacion):
         if operacion == 'Decimal':
@@ -178,14 +179,15 @@ class Dummylator(object):
                 self.valorGuardado = self.valorActual
                 self.operacionActual = operacion
                 self.reiniciarInfo()
+        return operacion
                 
     def activarFuncion(self):
-        messagebox.showinfo(message="Debe seleccionar un modo de entrada antes de empezar a utilizar la calculadora",
-                            title="Funcionalidad")                
+        mensaje = messagebox.showinfo(message="Debe seleccionar un modo de entrada antes de empezar a utilizar la calculadora",
+                            title="Funcionalidad")
+        return mensaje
         
     def modoEntrada(self,ventana,opciones):
         self.opc = tk.StringVar(ventana)
- 
         combobox = ttk.Combobox(ventana,font=('Comic Sans MS',8,"bold italic"),textvariable=self.opc)
         combobox.config(values=opciones)
         combobox["font"] = ('Comic Sans MS', 8, 'bold italic')
@@ -193,6 +195,7 @@ class Dummylator(object):
         combobox.pack()
         combobox.place(x=320,y=10)
         combobox.bind("<<ComboboxSelected>>", self.seleccionEntrada)
+        return combobox
 
     def seleccionEntrada(self,event):
         select=self.opc.get()

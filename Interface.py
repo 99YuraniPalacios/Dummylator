@@ -20,7 +20,8 @@ class Visualizacion(object):
     def crearVentanaPrincipal(self):
        self.ventanaPrincipal.title("Dummylator")
        self.ventanaPrincipal.geometry("500x500")
-       self.ventanaPrincipal.config(background = "gray85") 
+       self.ventanaPrincipal.config(background = "gray85")
+       return self.ventanaPrincipal
    
     def crearNuevaVentana(self, titulo):
        self.ventanaNueva = tk.Toplevel()
@@ -38,7 +39,6 @@ class Visualizacion(object):
         botonNivel = tk.Button(ventana, text=texto,activebackground="gray90",command=comando)
         botonNivel["font"] = ('Comic Sans MS', 8, 'bold italic')
         return botonNivel
-        
     
     def crearEntrada(self,ventana,width):
         self.textoEntrada = tk.StringVar(ventana)
@@ -48,7 +48,6 @@ class Visualizacion(object):
                            bd=4,insertwidth=4,justify="right")
         return entrada
     
-        
     def cargarOpcionesIniciales(self):
         self.etiquetaOpciones = tk.Label(self.ventanaPrincipal, text = "Dummylator")
         self.etiquetaOpciones["font"] = ('Comic Sans MS', 10, 'bold italic')
