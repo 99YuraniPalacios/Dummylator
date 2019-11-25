@@ -47,7 +47,7 @@ class Visualizacion(object):
                            width=width,textvariable=self.Dummylator.textoEntrada,
                            bd=4,insertwidth=4,justify="right")
         return entrada
-    
+
     def cargarOpcionesIniciales(self):
         self.etiquetaOpciones = tk.Label(self.ventanaPrincipal, text = "Dummylator")
         self.etiquetaOpciones["font"] = ('Comic Sans MS', 10, 'bold italic')

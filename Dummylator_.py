@@ -215,8 +215,7 @@ class Dummylator(object):
         self.reiniciarInfo()
         
     def Historial(self):
-        self.historial = self.funcOperacion('Igual')
+        self.historial = self.funcOperacionSimple('Igual')
         self.f = open('Historial.txt','w')
         self.f.write(str(self.historial))
-        self.f.close()
-        
+        self.f.close()        

@@ -26,6 +26,11 @@ class TestDummylator(unittest.TestCase):
         cambio = self.app.operacionCambioSigno()
         return unittest.skip(cambio)
     
+    def test_reiniciarInfo(self):
+        self.app = DL.Dummylator()
+        reiniciar = self.app.reiniciarInfo()
+        return unittest.skip(reiniciar)
+    
     def test_funcOperacionSimple(self):
         self.app = DL.Dummylator()
         operacion = self.app.funcOperacionSimple("Suma")
@@ -35,6 +40,11 @@ class TestDummylator(unittest.TestCase):
         self.app = DL.Dummylator()
         operacion = self.app.funcOperacionFormula("Multipl")
         return self.assertEqual(operacion, "Multipl")
+    
+    def test_funcOperacionFormulaD(self):
+        self.app = DL.Dummylator()
+        operacion = self.app.funcOperacionFormula("Division")
+        return self.assertEqual(operacion, "Division")
     
     def test_funcBorrar(self):
         self.app = DL.Dummylator()
@@ -119,10 +129,8 @@ class TestDummylator(unittest.TestCase):
         raiz = tk.Tk()
         self.app = It.Visualizacion(raiz)
         universidad = self.app.cargarWidgetsUniversidad()
-        return isinstance(universidad, tk.Tk)
-    
+        return isinstance(universidad, tk.Tk)    
 
 if __name__=="__main__":
     unittest.main()
-    
     
